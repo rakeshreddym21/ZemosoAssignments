@@ -1,7 +1,6 @@
 package com.date;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
 public class KycFormDate {
@@ -10,7 +9,7 @@ public class KycFormDate {
         LocalDate signupDate = LocalDate.parse(signup,f);                                    //String to LocalDate
         LocalDate currentDate = LocalDate.parse(current, f);
         int day = signupDate.getDayOfMonth();
-        Month month =signupDate.getMonth();
+        int month =signupDate.getMonthValue();
         int year = currentDate.getYear();
         LocalDate AnniversaryDate = LocalDate.of(year, month, day);                          //Current year Anniversary
         String pastDate="";
