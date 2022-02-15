@@ -20,6 +20,7 @@ public class SListIterator <T>{
         }
 
     }
+
     public void remove(){
         Node<T> temp=head;
         Node<T> pre=new Node<T>();
