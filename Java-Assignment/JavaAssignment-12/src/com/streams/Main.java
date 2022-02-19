@@ -8,5 +8,6 @@ public class Main {
        student.MalesAndFemales();
       student.EnrolledAfter2018();
       student.getDepartments();
+      student.detailsOfHighestPercentageStudent();
     }
 }
