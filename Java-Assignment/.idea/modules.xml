@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Java Assignmet -2/Java Assignmet -2.iml" filepath="$PROJECT_DIR$/Java Assignmet -2/Java Assignmet -2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java-Assignment.iml" filepath="$PROJECT_DIR$/.idea/Java-Assignment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-1/JavaAssignment-1.iml" filepath="$PROJECT_DIR$/JavaAssignment-1/JavaAssignment-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-10/JavaAssignment-10.iml" filepath="$PROJECT_DIR$/JavaAssignment-10/JavaAssignment-10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-11/JavaAssignment-11.iml" filepath="$PROJECT_DIR$/JavaAssignment-11/JavaAssignment-11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-12/JavaAssignment-12.iml" filepath="$PROJECT_DIR$/JavaAssignment-12/JavaAssignment-12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-3/JavaAssignment-3.iml" filepath="$PROJECT_DIR$/JavaAssignment-3/JavaAssignment-3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-4/JavaAssignment-4.iml" filepath="$PROJECT_DIR$/JavaAssignment-4/JavaAssignment-4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-5/JavaAssignment-5.iml" filepath="$PROJECT_DIR$/JavaAssignment-5/JavaAssignment-5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-6/JavaAssignment-6.iml" filepath="$PROJECT_DIR$/JavaAssignment-6/JavaAssignment-6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-7/JavaAssignment-7.iml" filepath="$PROJECT_DIR$/JavaAssignment-7/JavaAssignment-7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-8/JavaAssignment-8.iml" filepath="$PROJECT_DIR$/JavaAssignment-8/JavaAssignment-8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaAssignment-9/JavaAssignment-9.iml" filepath="$PROJECT_DIR$/JavaAssignment-9/JavaAssignment-9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaExamples/JavaExamples.iml" filepath="$PROJECT_DIR$/JavaExamples/JavaExamples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LambdasandStreams/LambdasandStreams.iml" filepath="$PROJECT_DIR$/LambdasandStreams/LambdasandStreams.iml" />
+    </modules>
+  </component>
+</project>

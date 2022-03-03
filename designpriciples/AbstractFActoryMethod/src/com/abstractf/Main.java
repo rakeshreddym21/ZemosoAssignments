@@ -8,7 +8,5 @@ AbstractFactory f=FactoryProducer.getFactory("Fuel");
 Car c=f.carType("Petrol");
 c.carProperties();
 
-
-
     }
 }
