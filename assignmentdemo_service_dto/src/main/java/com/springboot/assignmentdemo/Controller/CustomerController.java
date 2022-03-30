@@ -4,7 +4,8 @@ import com.springboot.assignmentdemo.converter.ReportConverter;
 import com.springboot.assignmentdemo.dto.ReportDto;
 import com.springboot.assignmentdemo.entity.Customer;
 import com.springboot.assignmentdemo.entity.Report;
-import com.springboot.assignmentdemo.service.HospitalManagementServiceImpl;
+import com.springboot.assignmentdemo.service.CustomerServiceImpl;
+import com.springboot.assignmentdemo.service.DoctorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,18 +20,21 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     private ReportConverter reportConverter;
+    @Autowired
+    private CustomerServiceImpl customerService;
+    @Autowired
+    private DoctorServiceImpl doctorService;
 
-@Autowired
-private HospitalManagementServiceImpl hospital;
+
     @RequestMapping("/list")
     public String listCustomers(Model theModel) {
-        List<Customer> customers = hospital.findAllCustomers();
+        List<Customer> customers = customerService.findAllCustomers();
         theModel.addAttribute("customers", customers);
         return "customers/listCustomers";
     }
     @RequestMapping("/listNa")
     public String listCustomersNa(Model theModel) {
-        List<Customer> customers = hospital.findAllCustomers();
+        List<Customer> customers = customerService.findAllCustomers();
         theModel.addAttribute("customers", customers);
         return "customers/listCustomersNa";
     }
@@ -51,7 +55,7 @@ private HospitalManagementServiceImpl hospital;
                                     Model theModel) {
 
 
-        Customer customer = hospital.findCustomerById(theId);        // set employee as a model attribute to pre-populate the form
+        Customer customer = customerService.findCustomerById(theId);        // set employee as a model attribute to pre-populate the form
         theModel.addAttribute("customer", customer);
 
         // send over to our form
@@ -62,7 +66,7 @@ private HospitalManagementServiceImpl hospital;
                                     Model theModel) {
 
 
-        Customer customer = hospital.findCustomerById(theId);        // set employee as a model attribute to pre-populate the form
+        Customer customer = customerService.findCustomerById(theId);        // set employee as a model attribute to pre-populate the form
         theModel.addAttribute("customer", customer);
 
         // send over to our form
@@ -77,7 +81,7 @@ private HospitalManagementServiceImpl hospital;
        {
            return "customers/customerForm";
        }
-        hospital.saveCustomer(theCustomer);
+        customerService.saveCustomer(theCustomer);
         return "redirect:/customers/list";
     }
 
@@ -88,7 +92,7 @@ private HospitalManagementServiceImpl hospital;
         {
             return "customers/customerFormNa";
         }
-        hospital.saveCustomer(theCustomer);
+        customerService.saveCustomer(theCustomer);
         return "redirect:/customers/listNa";
     }
 
@@ -96,7 +100,7 @@ private HospitalManagementServiceImpl hospital;
     public String delete(@RequestParam("customerId") int theId) {
 
 
-        hospital.deleteCustomerById(theId);
+        customerService.deleteCustomerById(theId);
 
         // redirect to /employees/list
         return "redirect:/customers/list";
@@ -105,7 +109,7 @@ private HospitalManagementServiceImpl hospital;
     }
     @GetMapping("/viewReports")
     public String viewPatients(@RequestParam("customerId") int theId,Model model) {
-        List<Report> theReports=hospital.findReports(theId);
+        List<Report> theReports=doctorService.findReports(theId);
         List<ReportDto> reports=reportConverter.entityToDto(theReports);
         model.addAttribute("reports",reports);
         return "customers/viewReports";

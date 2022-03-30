@@ -6,15 +6,7 @@ import com.springboot.assignmentdemo.entity.Report;
 
 import java.util.List;
 
-public interface HospitalManagementService {
-    List<Customer> findAllCustomers();
-
-    Customer findCustomerById(int theId);
-
-    void saveCustomer(Customer theCustomer);
-
-    void deleteCustomerById(int theId);
-
+public interface DoctorService {
     List<Report> findReports(int theId);
 
     List<Doctor> findAllDoctors();
@@ -27,11 +19,4 @@ public interface HospitalManagementService {
 
     List<Customer> findPatients(int theId);
 
-    List<Report> findAllReports();
-
-    Report findReportById(int theId);
-
-    Report saveReport(Report theReport);
-
-    void deleteReportById(int theId);
 }

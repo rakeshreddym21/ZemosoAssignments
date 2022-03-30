@@ -6,13 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.validation.constraints.Size;
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReportDto {
     private int id;
-
     private String diagnosisReport;
     private String prescription;
     @ToString.Exclude

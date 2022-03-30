@@ -6,12 +6,20 @@
 </head>
 <body>
 <h1>Welcome to Home Page of Spring Demo Assignment</h1>
+<div sec:authorize="hasRole('ADMIN')">
+
 <a th:href="@{/admin}">Admin</a>
+</div>
 <br>
+<div sec:authorize="hasRole('CUSTOMER')">
+
 <a th:href="@{/customers/listNa}">Customers</a>
+</div>
 <br>
+<div sec:authorize="hasRole('DOCTOR')">
 <a th:href="@{/doctors/listNa}">Doctors</a>
 <hr>
+</div>
 Logged in user: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>
 <form th:action="@{/logout}" method="POST">
     <input type="submit" value="Logout"/>

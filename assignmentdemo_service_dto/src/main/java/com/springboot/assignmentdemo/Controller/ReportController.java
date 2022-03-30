@@ -3,7 +3,7 @@ package com.springboot.assignmentdemo.Controller;
 import com.springboot.assignmentdemo.converter.ReportConverter;
 import com.springboot.assignmentdemo.dto.ReportDto;
 import com.springboot.assignmentdemo.entity.Report;
-import com.springboot.assignmentdemo.service.HospitalManagementServiceImpl;
+import com.springboot.assignmentdemo.service.ReportServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,14 +14,16 @@ import java.util.List;
 @Controller
 @RequestMapping("/reports")
 public class ReportController {
-        @Autowired
-    private HospitalManagementServiceImpl hospital;
+      //  @Autowired
+    //private HospitalManagementServiceImpl hospital;
         @Autowired
         private ReportConverter reportConverter;
+        @Autowired
+        private ReportServiceImpl reportService;
 
     @RequestMapping("/list")
     public String listReports(Model theModel) {
-        List<Report> reportList = hospital.findAllReports();
+        List<Report> reportList = reportService.findAllReports();
         List<ReportDto> reports=reportConverter.entityToDto(reportList);
         theModel.addAttribute("reports", reports);
         return "reports/listReports";
@@ -43,7 +45,7 @@ public class ReportController {
                                     Model theModel) {
 
 
-        Report report = hospital.findReportById(theId);
+        Report report = reportService.findReportById(theId);
         theModel.addAttribute("report", report);
         return "reports/reportForm";
     }
@@ -55,7 +57,7 @@ public class ReportController {
         // save the employee
         Report report=reportConverter.dtoToEntity(theReport);
 
-        hospital.saveReport(report);
+        reportService.saveReport(report);
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/reports/list";
@@ -65,7 +67,7 @@ public class ReportController {
 
         Report report=reportConverter.dtoToEntity(theReport);
 
-        hospital.saveReport(report);
+        reportService.saveReport(report);
 
         return "redirect:/doctors/listNa";
     }
@@ -74,7 +76,7 @@ public class ReportController {
     public String delete(@RequestParam("reportId") int theId) {
 
 
-        hospital.deleteReportById(theId);
+        reportService.deleteReportById(theId);
 
         return "redirect:/reports/list";
 

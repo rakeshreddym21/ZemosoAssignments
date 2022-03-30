@@ -3,7 +3,9 @@ package com.springboot.assignmentdemo.Controller;
 import com.springboot.assignmentdemo.entity.Customer;
 import com.springboot.assignmentdemo.entity.Doctor;
 import com.springboot.assignmentdemo.entity.Report;
-import com.springboot.assignmentdemo.service.HospitalManagementServiceImpl;
+import com.springboot.assignmentdemo.service.CustomerServiceImpl;
+import com.springboot.assignmentdemo.service.DoctorServiceImpl;
+import com.springboot.assignmentdemo.service.ReportServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,19 +17,23 @@ import java.util.List;
 @RequestMapping("/doctors")
 public class DoctorController {
 
+   // @Autowired
+    //private HospitalManagementServiceImpl hospital;
     @Autowired
-    private HospitalManagementServiceImpl hospital;
+    private DoctorServiceImpl doctorService;
+    @Autowired
+    private ReportServiceImpl reportService;
 
 
     @RequestMapping("/list")
     public String listDoctors(Model theModel) {
-        List<Doctor> doctors = hospital.findAllDoctors();
+        List<Doctor> doctors = doctorService.findAllDoctors();
         theModel.addAttribute("doctors", doctors);
         return "doctors/listDoctors";
     }
     @RequestMapping("/listNa")
     public String listDoctorsNa(Model theModel) {
-        List<Doctor> doctors = hospital.findAllDoctors();
+        List<Doctor> doctors = doctorService.findAllDoctors();
         theModel.addAttribute("doctors", doctors);
         return "doctors/listDoctorsNa";
     }
@@ -47,7 +53,7 @@ public class DoctorController {
     public String showFormForUpdate(@RequestParam("doctorId") int theId,
                                     Model theModel) {
 
-        Doctor doctor=hospital.findDoctorById(theId);
+        Doctor doctor=doctorService.findDoctorById(theId);
         // set employee as a model attribute to pre-populate the form
         theModel.addAttribute("doctor", doctor);
 
@@ -59,7 +65,7 @@ public class DoctorController {
                                     Model theModel) {
 
         // get the employee from the service
-        Doctor doctor=hospital.findDoctorById(theId);
+        Doctor doctor=doctorService.findDoctorById(theId);
         // set employee as a model attribute to pre-populate the form
         theModel.addAttribute("doctor", doctor);
 
@@ -72,7 +78,7 @@ public class DoctorController {
     public String saveDoctor(@ModelAttribute("doctor") Doctor theDoctor) {
 
         // save the employee
-        hospital.saveDoctor(theDoctor);
+        doctorService.saveDoctor(theDoctor);
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/doctors/list";
@@ -81,7 +87,7 @@ public class DoctorController {
     public String saveDoctorNa(@ModelAttribute("doctor") Doctor theDoctor) {
 
         // save the employee
-        hospital.saveDoctor(theDoctor);
+        doctorService.saveDoctor(theDoctor);
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/doctors/listNa";
@@ -90,7 +96,7 @@ public class DoctorController {
     public String saveForm(@ModelAttribute("report") Report theReport) {
 
         // save the employee
-        hospital.saveReport(theReport);
+        reportService.saveReport(theReport);
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/doctors/viewReports";
@@ -99,7 +105,7 @@ public class DoctorController {
     public String delete(@RequestParam("doctorId") int theId) {
 
         // delete the employee
-        hospital.deleteDoctorById(theId);
+        doctorService.deleteDoctorById(theId);
 
         // redirect to /employees/list
         return "redirect:/doctors/list";
@@ -109,7 +115,7 @@ public class DoctorController {
     public String viewPatients(@RequestParam("doctorId") int theId,Model model) {
 
         // delete the employee
-        List<Customer> customers=hospital.findPatients(theId);
+        List<Customer> customers=doctorService.findPatients(theId);
         model.addAttribute("customers",customers);
         return "doctors/listPatients";
 
@@ -117,7 +123,7 @@ public class DoctorController {
     @GetMapping("/viewReports")
     public String viewReports(@RequestParam("customerId") int theId,Model model) {
 
-        List<Report> reports=hospital.findReports(theId);
+        List<Report> reports=doctorService.findReports(theId);
         model.addAttribute("reports",reports);
         return "doctors/viewReports";
 
@@ -127,7 +133,7 @@ public class DoctorController {
                                     Model theModel) {
 
         // get the employee from the service
-        Report report = hospital.findReportById(theId);
+        Report report = reportService.findReportById(theId);
         // set employee as a model attribute to pre-populate the form
         theModel.addAttribute("report", report);
 
