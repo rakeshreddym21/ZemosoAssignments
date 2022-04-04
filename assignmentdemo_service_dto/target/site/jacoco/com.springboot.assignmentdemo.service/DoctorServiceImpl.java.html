@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DoctorServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignmentdemo</a> &gt; <a href="index.source.html" class="el_package">com.springboot.assignmentdemo.service</a> &gt; <span class="el_source">DoctorServiceImpl.java</span></div><h1>DoctorServiceImpl.java</h1><pre class="source lang-java linenums">package com.springboot.assignmentdemo.service;
+
+import com.springboot.assignmentdemo.dao.CustomerRepository;
+import com.springboot.assignmentdemo.dao.DoctorRepository;
+import com.springboot.assignmentdemo.dao.ReportRepository;
+import com.springboot.assignmentdemo.entity.Customer;
+import com.springboot.assignmentdemo.entity.Doctor;
+import com.springboot.assignmentdemo.entity.Report;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+@Service
+<span class="fc" id="L15">public class DoctorServiceImpl implements DoctorService{</span>
+    @Autowired
+    private CustomerRepository customerRepository;
+    @Autowired
+    private ReportRepository reportRepository;
+    @Autowired
+    private DoctorRepository doctorRepository;
+    @Override
+    public List&lt;Report&gt; findReports(int theId) {
+<span class="fc" id="L24">        return reportRepository.findReports(theId);</span>
+    }
+
+    @Override
+    public List&lt;Doctor&gt; findAllDoctors() {
+<span class="fc" id="L29">        return doctorRepository.findAll();</span>
+    }
+
+    @Override
+    public Doctor findDoctorById(int theId) {
+<span class="fc" id="L34">        Optional&lt;Doctor&gt; theDoctor = doctorRepository.findById(theId);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if(theDoctor.isPresent())</span>
+        {
+<span class="fc" id="L37">            return theDoctor.get();</span>
+        }
+        else {
+<span class="fc" id="L40">            throw new RuntimeException(&quot;Doctor Not Found with Id: &quot; + theId);</span>
+        }
+    }
+
+    @Override
+    public void saveDoctor(Doctor theDoctor) {
+<span class="fc" id="L46">        doctorRepository.save(theDoctor);</span>
+<span class="fc" id="L47">    }</span>
+
+    @Override
+    public void deleteDoctorById(int theId) {
+<span class="fc" id="L51">        doctorRepository.deleteById(theId);</span>
+<span class="fc" id="L52">    }</span>
+
+    @Override
+    public List&lt;Customer&gt; findPatients(int theId) {
+<span class="fc" id="L56">        return customerRepository.findPatients(theId);</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
