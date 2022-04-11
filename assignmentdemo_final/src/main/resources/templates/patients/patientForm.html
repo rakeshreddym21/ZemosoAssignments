@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+	  xmlns:form="http://www.w3.org/1999/html">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Patient</title>
+	<style>
+    .error {
+        color: red;
+    }
+</style>
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<h3>Patient Directory</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Save Patient</p>
+	
+		<form action="#" th:action="@{/patients/save}"
+						 th:object="${patient}" method="POST">
+		
+			<input type="hidden" th:field="*{id}" />
+			<p th:if="${#fields.hasErrors('patientName')}"th:errorclass="error" th:errors="*{patientName}"></p>
+			<input type="text" th:field="*{patientName}"
+					class="form-control mb-4 col-4" placeholder="Patient name" >
+
+			<p th:if="${#fields.hasErrors('patientAddress')}"th:errorclass="error" th:errors="*{patientAddress}"></p>
+
+			<input type="text" th:field="*{patientAddress}"
+					class="form-control mb-4 col-4" placeholder="Patient Address">
+			<!--<input type="text" th:field="*{doctor}"
+				   class="form-control mb-4 col-4" placeholder="Doctor">
+          		-->
+            Select Doctor from the DropDown:
+			<br><br>
+			<select th:field="*{doctor}" >
+
+				<option th:each ="i:${doctors}" th:value="${i.id}" th:text="${i.getDetails()}" />
+			</select>
+			<br><br>
+			<button type="submit" class="btn btn-info col-2">Save</button>
+		</form>
+	
+		<hr>
+		<a th:href="@{/patients/list}">Back to Patients List</a>
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+<h1>Welcome to Home Page of Spring Demo Assignment</h1>
+<div sec:authorize="hasRole('ADMIN')">
+
+<a th:href="@{/admin}" class="btn btn-success btn-sm">Admin</a>
+</div>
+<br>
+<div sec:authorize="hasRole('PATIENT')">
+
+<a th:href="@{/patients/listNa}" class="btn btn-success btn-sm">Patients</a>
+</div>
+<br>
+<div sec:authorize="hasRole('DOCTOR')">
+<a th:href="@{/doctors/listNa}" class="btn btn-success btn-sm">Doctors</a>
+<hr>
+</div>
+Logged in user: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>
+<br><br>
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout" class="btn btn-danger btn-sm"/>
+</form>
+</body>
+</html>
+
+

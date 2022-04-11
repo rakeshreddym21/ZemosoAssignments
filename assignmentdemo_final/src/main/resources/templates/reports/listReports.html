@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Report Directory</title>
+	<nav aria-label="Page navigation example">
+		<ul class="pagination pg-blue">
+			<li class="page-item"><a class="page-link">Previous</a></li>
+			<li class="page-item"><a class="page-link">1</a></li>
+			<li class="page-item"><a class="page-link">2</a></li>
+			<li class="page-item"><a class="page-link">3</a></li>
+			<li class="page-item"><a class="page-link">Next</a></li>
+		</ul>
+	</nav>
+</head>
+
+<body>
+<div class="container">
+
+	<h3>Report Directory</h3>
+	<hr>
+	<table id ="myTable" class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>diagnosis</th>
+				<th>Prescription</th>
+				<th>Customer</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempReport : ${reports}">
+			
+				<td th:text="${tempReport.diagnosisReport}" />
+				<td th:text="${tempReport.prescription}" />
+				<td th:text="${tempReport.patient.patientName}" />
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+<a href="/">Go to Home Page</a>
+<br><br>
+<a href="/admin">Go to previous Page</a>
+<br><br>
+
+</body>
+</html>
+
+
+
