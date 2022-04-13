@@ -1,8 +1,8 @@
-const display=function(msg){
-    console.log(msg);
+const display = function (msg) {
+  console.log(msg);
+};
+function greet(name, func) {
+  msg = "Happy Birthday " + name;
+  func(msg);
 }
-function greet(name,func){
-    msg="Happy Birthday "+name;
-    display(msg)
-}
-greet("Manoj",display)
+greet("Manoj", display);
