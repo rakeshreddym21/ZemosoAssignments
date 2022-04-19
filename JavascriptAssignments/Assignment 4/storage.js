@@ -1,8 +1,6 @@
 window.onload=()=>{
      print();
 }
-
-
 function print() {
   
   if (sessionStorage.sessioncount == undefined) {
