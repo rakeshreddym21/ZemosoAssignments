@@ -7,9 +7,7 @@ function search() {
   if (searchfilter == "") {
     allItems();
   } else {
-    console.log("inme");
     var allitems = document.getElementsByClassName("item");
-    console.log(allitems);
     for (var k = 0; k < allitems.length; k++) {
       if (allitems[k].textContent.toLowerCase().indexOf(searchfilter) != -1) {
         allitems[k].style.display = "block";
